@@ -1,0 +1,56 @@
+Name: Diego Sanchez-Carapia
+Student Number: 811568813
+yy
+1. The output for s1 is not 4 because we know that the sizeof() operator returns the number of bytes 
+   the given parameter holds. Since s1 has 4 letters, they each are a char, which is 1 byte of memory.
+   We also can't forget about the terminating null character that goes at the end. Whenever 
+   it's initialized with "", the C compiler automatically adds a '\0' to the end so when read,the 
+   compiler knows when to stop. Since '\0' is a character, that's where the last byte of memory 
+   comes from, which makes the sizeof() operator return 5.
+
+
+2. The == operator checks the memory addresses to which it's pointing. So when you compare s1 == s2, 
+   it checks if they are pointing to the same place in memory; it does not check each individual 
+   cell to see if they are the same or not. Since s1 and s2 are pointing to two different places in 
+   memory, the if statement returns false.
+
+3. The line (strcmp(s3, s4) == 0) results in true because the strcmp function that is imported from 
+   the <string.h> library checks if the strings are the same character by character, and if they are, 
+   it returns 0, which makes 0 == 0 true, resulting in 1. Since the if function is only false if 
+   it is zero, the if function above, since it's not zero, is true and proceeds with the next 
+   line, which is to print.
+
+4. The values stored in v are 8 8 8 8 because what the function is doing  in the for loop is 
+   subtracting the addresses and casting them to an unsigned long. All this does is subtract the 
+   addresses, and since the array is of type double, the distances between each pointer are 8 
+   bytes, so it prints 8 8 8 8. You’re iterating through the array and finding the difference in 
+   addresses from each cell that is adjacent to each other. For example,let's say the address of 
+   d is 500, which means d[0] is 500, d[1] is 508, d[2] is 516, and d[3] is 524, and all you do 
+   is subtract the adjacent ones, leaving you with 8 8 8 8.
+
+5. The output for s4 is joes because p1 is a pointer pointing to a character, and it's pointing 
+   to the value in [0], which is 'z'. The next line says that the value of p1 is getting set to 'j'. 
+   After that, the line *(&s4[3]) = 's'; changes s4[3] (which is 'y') to 's'. The value that 5000 
+   is pointing to gets set to the character 's', which will print out "joes". For s5, it prints 
+   zoey because when printing, the printf function looks for the null-terminating character  '\0',
+   and once it finds it, it ends the printf function, giving you the result "zoey" instead of 
+   "zoey is awesome".
+
+6. The value of (q[1] + q[2]) is 7. In the first line, q[5] is declared. In the second line, p2 
+   is a pointer to an int that points to q. The third line sets up the array to become q = {5, 
+   10, -3, 20, 25}. When the f function is called, the value of 10 is passed as the first 
+   parameter, but since the first parameter is not a pointer, it is passed by value, and the 
+   array q is not affected. The second parameter that is passed in is q[2]. Since the second 
+   parameter is a pointer to an int, it gets the memory address of q[2]. In the f function, the 
+   value of y (which is q[2]) is set to -3 and is affected in the q array since it has its 
+   memory location. Using *(q[1] + q[2]) is incorrect syntax because the order of precedence 
+   says to add q[1] + q[2] first, which is an integer, and that integer cannot be a pointer.
+
+7. The memory addresses from 7 and 8 change every time the program is run because when a program 
+   is executed, the operating system assigns different memory addresses every time the program is 
+   run. The base-10 number system is being used to display the memory addresses in number 7 
+   because they have been cast to an unsigned long. The hexadecimal number system is being used 
+   to display the memory addresses in number 8 because the %p is used to print pointer values 
+   and outputs them in hexadecimal.
+
+

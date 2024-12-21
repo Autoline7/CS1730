@@ -1,0 +1,134 @@
+Name: Diego Sanchez-Carapia
+Student Number: 811568813
+
+1A.  The statements of the code that are valid are
+	int * p1 = &x;
+	*p1 = 11;        
+
+
+1B.  The statements of the code that are valid are
+        const int * p2 = &x;
+	p2 = &y;
+
+       The statements of the code that are invalid are
+        *p2 = 11;
+
+        p2 is a non-constant pointer that points to a constant int. Since it points to a constant
+	int the value of that int cannot be changed causing an error.
+
+
+1.C   The statements of the code that are valid are
+        const int * const p3 = &x;
+
+        The statements of the code that are invalid are
+        *p3 = 11;
+        p3 = &y;
+
+        p3 is a constant pointer that points to a constant int. In the first line since it points to a  
+        constant int the value of that int cannot be changed causing an error. In the second line
+        the pointer cannot be changed since the pointer is a constant and that line attempts to
+        change the value of the pointer leading to an error.
+
+
+2.A   The statements of the code that are valid are
+        int * p1 = a;
+        const int * p2 = a; 
+	const int * const p3 = a;
+
+
+2.B   The statements of the code that are valid are
+        p1++;
+        p2++;
+
+        The statements of the code that are invalid are
+        p3++;
+
+        This is because p3 is a constant pointer to a constant int therefore when you try
+        To increment the pointer it has to switch the memory address making it invalid and 
+	causing and error.
+
+
+2.C   The statements of the code that are valid are
+        (*a)++;
+
+        The statements of the code that are invalid are
+        a = b;
+	a++;
+
+	The first line is invalid because a is a constant pointer to an array therefore cannot be
+	assigned to what b holds. In the second line Since a is a constant pointer the value is
+	cannot be incremented leading to an error.
+
+
+3.A The statements of the code that are valid are
+        int x = foo();
+        x++;
+
+      The statements of the code that are invalid are
+	foo()++;
+
+	The statement is invalid because since it returns a constant int and the ‘++’ intends to
+	modify it. But can’t since it's a constant int and leads to an error.
+
+3.B The statements of the code that are valid are//THIS IS WHERE I AM
+        const int * p1 = bar();
+ 	p1++; 
+
+      The statements of the code that are invalid are
+	(*p1)++; 
+	bar()++; 
+	(*bar())++;
+
+	The first line is invalid because bar returns a pointer to a constant int, 
+	since the line is attempting to change the value that the pointer is pointing to it gives an
+	error since that value is supposed to be a constant int. The second line when you use a
+	function you cannot increment the result because its a read only value so it cannot be 
+	incremented. In the third line the function bar returns a constant int and therefore the
+	value cannot be modified.
+
+
+3.C  The statements of the code that are valid are
+        const int * p2 = baz(); 
+	p2++;
+	(*baz())++;
+
+	The statements of the code that are invalid are
+	(*p2)++;
+	baz()++;
+	The first line of the is invalid because p2 is a pointer to a constant int therefore when you 
+	try modifying those values and you will get an error. The second line is invalid because baz is 
+	not modifiable and is a read only value causing an error.
+
+
+4.A  The values printed by the code are
+        44
+        22
+
+        This is because the first time the function is called the 44 is passed by value and the 
+	function returns void so nothing happens and prints 44. The second time the function is called 
+	the address is passed and the method takes in a pointer to an int and inside the method the value 
+	is changed using the address which makes x become 22 and prints it.
+
+4.B In the code &x used for the function parameter for the call to divBy2Again because if you don’t use it, it
+    will use the pass by value and will not change the value of x just line the other function. The &x passes
+    in the memory address to the function and the function does the operation on that memory address and gets it
+    changed.
+
+4.C 
+
+Declaration                           Meaning
+-------------------------------------------------------------------------------------------------
+int x;                                x is an int
+int * x;                              x is a pointer to an int
+char ** x;                            x is a pointer to a pointer to a char
+int * x [5];                          x is an array of 5 pointers to ints
+int (* x) [5];                        x is a pointer to an array of 5 ints
+int (* x [5]) [5];                    x is an array of 5 pointers to an array of 5 ints
+int * (* x [5]) [5];                  x is an array of 5 pointers to arrays of 5 pointers to ints
+int x();                              x is a function with zero parameters that returns an int
+int x(int);                           x is a function with 1 parameter which is an int that returns an int
+int * x();                            x is a function with zero parameters that returns a pointer to an int
+int * x(int *);                       x is a function with 1 parameter which is a pointer to an int and returns a pointer to an int
+int (* x)();                          x is a pointer to a function with zero parameters and returns an int
+int ** (* x)(int **);                 x is a pointer to a function with 1 parameter which is a pointer to a pointer to an int and returns a pointer to a pointer to an int
+
